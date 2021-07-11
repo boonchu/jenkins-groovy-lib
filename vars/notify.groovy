@@ -17,12 +17,11 @@ def notify_build(def buildStatus) {
     buildStatus = buildStatus ?: 'STARTED'
     echo "LOG->INFO : Build status is ${buildStatus}"
 
+    // https://stackoverflow.com/questions/57364925/jenkins-instance-getitem-fails-for-jobs-in-folders
     def buildName = Jenkins.instance.getItemByFullName('Stage/jenkins-groovy-files')
-
     if (buildName != null) {
 		echo "Last success: ${buildName.getLastSuccessfulBuild()}"
         echo "All builds: ${buildName.getBuilds().collect{ it.getNumber()}}"
         echo "Last build: ${buildName.getLastBuild()}"
-        echo "Is building: ${job.isBuilding()}"
     }
 }
