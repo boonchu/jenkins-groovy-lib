@@ -9,7 +9,7 @@ def call(String branch, String gitUrl) {
     // checkout
     git branch: "${branch}", url: "${gitUrl}"
     // get last tag
-    sh "git describe --abbrev=0 --tags > .git/tagName"
+    sh "git describe --tags --always > .git/tagName"
     tagName = readFile('.git/tagName')
     echo "${tagName}"
     // set DisplayName
