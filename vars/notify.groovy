@@ -15,11 +15,9 @@ def call(def result) {
 
 def notify_build(def buildStatus) {
     buildStatus = buildStatus ?: 'STARTED'
-    env.JOB_DISPLAY_NAME = Jenkins.instance.getJob("${env.JOB_NAME}").displayName
-    env.PREVIOUS_BUILD_RESULT = currentBuild.rawBuild.getPreviousBuild()?.getResult().toString()
 
     def colorMap = [ 'STARTED': '#F0FFFF', 'SUCCESS': '#008B00', 'FAILURE': '#FF0000' ]
-    def subject = "Pipeline: ${env.JOB_DISPLAYNAME} - #${env.BUILD_NUMBER} ${buildStatus}"
+    def subject = "Pipeline: ${env.JOB_DISPLAY_NAME} - #${env.BUILD_NUMBER} ${buildStatus}"
     def summary = "${subject} (${env.BUILD_URL})"
     def colorName = colorMap[buildStatus]
 
@@ -35,6 +33,9 @@ def notify_build(def buildStatus) {
 			total = [totatBuilds, builds].flatten().findAll{it} 
 		}
 	}
+    
+    println "Total Builds: ${totatBuilds}"
+    println "Total Builds Count: ${buildCount = totatBuilds.size()}"
 
     if ("${buildStatus}" != "${env.PREVIOUS_BUILD_RESULT}") {
         echo "message: ${summary}, color: ${colorName}"
