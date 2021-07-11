@@ -15,6 +15,7 @@ def call(def result) {
 
 def notify_build(def buildStatus) {
     buildStatus = buildStatus ?: 'STARTED'
+    echo "LOG->INFO : Build status is ${buildStatus}"
 
     def buildName = Jenkins.instance.getItemByFullName('Stage/jenkins-groovy-files')
 
