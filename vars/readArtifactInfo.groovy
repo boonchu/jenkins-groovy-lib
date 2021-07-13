@@ -1,10 +1,12 @@
 #!groovy
 
 def call() {
-    def pom = read_pom_file(result)
-    sh "echo ${pom.version} > .git/tagName"
-    tagName = readFile('.git/tagName')
-    echo "${tagName}"
+	script {
+    	def pom = read_pom_file(result)
+    	sh "echo ${pom.version} > .git/tagName"
+    	tagName = readFile('.git/tagName')
+    	echo "${tagName}"
+	}
     // set DisplayName
     currentBuild.displayName = tagName
 }
