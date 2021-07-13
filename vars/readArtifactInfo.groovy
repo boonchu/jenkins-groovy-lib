@@ -1,5 +1,7 @@
+#!groovy
+
 def call(def result) {
-    read_pom_file(result)
+    def pom = read_pom_file(result)
 }
 
 
@@ -9,4 +11,5 @@ def read_pom_file(def buildStatus) {
     ARTIFACT_PKG_NAME = pom.packaging
     echo "LOG->INFO : ARTIFACT_VERSION is ${ARTIFACT_VERSION}"
     echo "LOG->INFO : ARTIFACT_PKG_NAME is ${ARTIFACT_PKG_NAME}"
+	[version: "${ARTIFACT_VERSION}", packaging: "${ARTIFACT_PKG_NAME}"]
 }
