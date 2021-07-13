@@ -2,11 +2,9 @@
 
 def call() {
     def pom = read_pom_file(result)
-	script {
-    	sh "echo ${pom.version}" > .git/tagName"
-    	tagName = readFile('.git/tagName')
-    	echo "${tagName}"
-	}
+    sh "echo ${pom.version}" > .git/tagName"
+    tagName = readFile('.git/tagName')
+    echo "${tagName}"
     // set DisplayName
     currentBuild.displayName = tagName
 }
