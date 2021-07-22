@@ -12,6 +12,11 @@ def call() {
     	'Stage': ['Build', 'Deploy']
     ]
 
+	def targetJobs = [
+		'Stage/jenkins-groovy-files',
+		'Stage/jenkins-bazel-files'
+	]
+
 	def jenkins = Jenkins.instance
 	def String[] allJobs = jenkins.getAllItems(Job.class).fullName	
 
