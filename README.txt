@@ -1,4 +1,6 @@
-https://websiteforstudents.com/how-to-install-apache-groovy-on-ubuntu-20-04-18-04/
+### aws groovy ###
+
+* https://websiteforstudents.com/how-to-install-apache-groovy-on-ubuntu-20-04-18-04/
 
 source setup_env
 > groovysh
@@ -11,4 +13,6 @@ groovy:000> arg.class
 groovy:000> arg[1]
 ===> Java
 
+### git-flow cheat sheet ###
 
+* https://danielkummer.github.io/git-flow-cheatsheet/
