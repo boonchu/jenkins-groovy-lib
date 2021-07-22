@@ -12,7 +12,7 @@ import hudson.model.*
 import com.cloudbees.hudson.plugins.folder.*
 
 def call() {
-	jenkins = Jenkins.instance
+	def jenkins = Jenkins.instance
 	def String[] allJobs = jenkins.getAllItems(Job.class).fullName	
 
 	targetFolders.each { folders -> 
