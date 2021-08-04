@@ -12,10 +12,10 @@ def call() {
         ARTIFACT_PKG_SUFFIX=pom.packaging
         ARTIFACT_PKG_GROUP=pom.groupId
 	}
-    echo "CALL->INFO : ARTIFACT_PKG_VERSION is ${env.ARTIFACT_PKG_VERSION}"
-    echo "CALL->INFO : ARTIFACT_PKG_NAME is ${env.ARTIFACT_PKG_NAME}"
-    echo "CALL->INFO : ARTIFACT_PKG_SUFFIX is ${env.ARTIFACT_PKG_SUFFIX}"
-    echo "CALL->INFO : ARTIFACT_PKG_GROUP is ${env.ARTIFACT_PKG_GROUP}"
+    echo "CALL->INFO : ARTIFACT_PKG_VERSION is ${ARTIFACT_PKG_VERSION}"
+    echo "CALL->INFO : ARTIFACT_PKG_NAME is ${ARTIFACT_PKG_NAME}"
+    echo "CALL->INFO : ARTIFACT_PKG_SUFFIX is ${ARTIFACT_PKG_SUFFIX}"
+    echo "CALL->INFO : ARTIFACT_PKG_GROUP is ${ARTIFACT_PKG_GROUP}"
 
     sh "echo ${pom.version} > .git/tagName"
     tagName = readFile('.git/tagName')
