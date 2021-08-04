@@ -8,4 +8,5 @@ def call() {
     echo "CALL->INFO: value read from file .git/tagName as ${tagName}"
     // set DisplayName
     currentBuild.displayName = tagName
+    return pom
 }
