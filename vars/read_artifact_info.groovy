@@ -2,21 +2,6 @@
 
 def call() {
     def pom = readMavenPom file: 'pom.xml'
-
-    // https://maven.apache.org/pom.html
-    // https://stackoverflow.com/questions/53541489/updating-environment-global-variable-in-jenkins-pipeline-from-the-stage-level/53541813
-    // video - https://www.youtube.com/watch?v=KwQDxwZRZiE
-    environment {
-		ARTIFACT_PKG_VERSION=pom.version
-		ARTIFACT_PKG_NAME=pom.artifactId
-        ARTIFACT_PKG_SUFFIX=pom.packaging
-        ARTIFACT_PKG_GROUP=pom.groupId
-	}
-    echo "CALL->INFO : ARTIFACT_PKG_VERSION is ${ARTIFACT_PKG_VERSION}"
-    echo "CALL->INFO : ARTIFACT_PKG_NAME is ${ARTIFACT_PKG_NAME}"
-    echo "CALL->INFO : ARTIFACT_PKG_SUFFIX is ${ARTIFACT_PKG_SUFFIX}"
-    echo "CALL->INFO : ARTIFACT_PKG_GROUP is ${ARTIFACT_PKG_GROUP}"
-
     sh "echo ${pom.version} > .git/tagName"
     tagName = readFile('.git/tagName')
     echo "CALL->INFO: value read from file .git/tagName as ${tagName}"
