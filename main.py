@@ -6,4 +6,6 @@ from acl import os
 This is a comment that was written in
 more than just a one line.
 """
+
+print("Say Hello First!")
 print("Hello World")
